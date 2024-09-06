@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacinto // Podcast Player</title>
+    <!-- Zero to Mastery Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- FontAwesome V5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <div class="nav-wrapper">
+        <nav class="nav">
+            <h1 class="nav-title">Podcast Player</h1>
+            <i class="fas fa-microphone-alt"></i>
+            <!-- Mobile Navigation -->
+            <div class="nav-list">
+                <span id="searchLink" class="selected">Search</span>
+                <span id="listenLink">Listen</span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <!-- Search Container -->
+        <div class="search-container">
+            <!-- Search History -->
+            <div class="custom-select">
+                <select name="searchHistory" id="searchHistory" title="Search History">
+                    <option value="">Select a Previous Search</option>
+                </select>
+            </div>
+            <!-- Search Input -->
+            <input type="text" id="searchInput" placeholder="Search by Podcast / Topic">
+            <!-- Search Buttons -->
+            <div class="search-buttons">
+                <button type="button" id="searchButton">Search</button>
+                <button type="button" id="resetButton">Clear History</button>
+            </div>
+        </div>
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Loader -->
+            <div id="loader" class="loader-container">
+                <i class="fas fa-microphone-alt"></i>
+            </div>
+            <!-- Cards Container -->
+            <div id="response" class="cards-container"></div>
+        </div>
+
+        <!-- Player Container -->
+        <div class="player-container">
+            <!-- Player -->
+            <div class="player">
+                <!-- Image -->
+                <div class="img-container">
+                    <img id="image" src="./default-podcast.png" alt="Podcast Image">
+                </div>
+                <!-- Title / Date -->
+                <div class="title-container">
+                    <h2 id="title">Podcast Title</h2>
+                    <h3 id="datePublished">Date Published</h3>
+                </div>
+                <!-- Audio Element -->
+                <audio id="player" src=""></audio>
+                <div class="controls-container">
+                    <!-- Progress -->
+                    <div class="progress-container" id="progress-container">
+                        <div class="progress" id="progress"></div>
+                        <div class="duration-wrapper">
+                            <span id="current-time">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <div class="player-controls">
+                        <i class="fas fa-backward" id="prev" title="-15 Seconds"></i>
+                        <i class="fas fa-play main-button" id="play" title="Play"></i>
+                        <i class="fas fa-forward" id="next" title="+15 Seconds"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Queue -->
+            <div class="queue">
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

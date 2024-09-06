@@ -1,0 +1,607 @@
+@import url("https://fonts.googleapis.com/css?family=Spartan:400,700&display=swap");
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #c9ced3;
+    font-family: 'Spartan', sans-serif;
+}
+
+/* Navbar --------------------------------------- */
+.nav-wrapper {
+    height: 50px;
+    width: 100%;
+    background: black;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 10px;
+}
+
+.nav-title {
+    font-size: 28px;
+    margin: 0;
+    margin-left: 25px;
+    color: white;
+}
+
+.nav-wrapper i {
+    color: #1DB954;
+    font-size: 25px;
+    position: relative;
+    top: -3px;
+    left: 10px;
+}
+
+.nav-list {
+    display: none;
+}
+
+/* Search Container ----------------------------- */
+.search-container {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    display: flex;
+}
+
+select, input, button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+input {
+    width: 300px;
+}
+
+.custom-select {
+    width: 300px;
+    height: 40px;
+    position: relative;
+    margin-right: 10px;
+}
+  
+.custom-select select {
+    appearance: none;
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+    height: 40px;
+}
+
+.custom-select::before,
+.custom-select::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+}
+
+.custom-select::before {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+    top: 45%;
+}
+
+.custom-select::after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+    top: 65%;
+}
+
+.search-buttons {
+    display: flex;
+}
+
+button {
+    cursor: pointer;
+    background: black;
+    color: rgb(220, 220, 220);
+    border: none;
+    min-width: 100px;
+}
+
+#resetButton {
+    background: rgb(190, 13, 13);
+    color: white;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+/* Main Container ------------------------------- */
+.page-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100vh - 50px);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 500px);
+    height: calc(100% - 100px);
+    margin: 0 auto;
+    margin-top: 75px;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #e7e7e7;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.3);
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    margin-top: 75px;
+}
+
+/* Loader */ 
+.loader-container {
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}
+
+.loader-container i {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        color: black;
+    }
+    50% {
+        color: #1DB954;
+    }
+}
+  
+/* Cards */
+.cards-container {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    overflow-y: auto;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    height: 250px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.card img {
+    width: 250px;
+    min-width: 250px;
+    height: auto;
+}
+
+.card-content {
+    padding: 15px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.card p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.card .episode-count {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.card .pub-date {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.card .pub-date-alt {
+    font-size: 0.8em;
+    color: #777;
+    margin: 8px 0 7px 15px;
+}
+
+/* Card Icons */
+.icon-container {
+    display: flex;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.icon-container i {
+    font-size: 30px;
+    color: rgb(95, 95, 95);
+    cursor: pointer;
+}
+
+.icon-container i:hover {
+    filter: brightness(60%);
+}
+
+/* Player Container ------------------------------ */
+
+/* Player */
+.player {
+    height: 400px;
+    width: 400px;
+    background: #e7e7e7;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+  
+.img-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: -50px;
+    margin: 0 auto;
+}
+
+.img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
+}
+
+.title-container {
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+    top: -20px;
+}
+
+.title-container h2 {
+    font-size: 18px;
+    text-align: center;
+    margin: 0;
+}
+
+.title-container h3 {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 400;
+    margin: 5px 0 0;
+}
+
+/* Controls Container */
+.controls-container {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+/* Progress */
+.progress-container {
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 40px 20px;
+    height: 4px;
+    width: 90%;
+}
+
+.progress {
+    background: #242323;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+@keyframes loadingAnimation {
+    0%, 100% {
+        width: 0%;
+    }
+    50% {
+        width: 100%;
+    }
+}
+  
+.loading {
+    animation: loadingAnimation 2s infinite ease-in-out;
+}
+  
+.duration-wrapper {
+    position: relative;
+    top: -25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Controls */
+.player-controls {
+    position: relative;
+    top: -15px;
+    left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-controls .fas {
+    font-size: 30px;
+    color: rgb(129, 129, 129);
+    margin-right: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.player-controls .fas:hover {
+    filter: brightness(80%);
+}
+
+.main-button {
+    position: relative;
+    left: 3px;
+}
+
+/* Queue */
+.queue {
+    background: #e7e7e7;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.3);
+    height: calc(100% - 450px);
+    width: 400px;
+    margin-top: 25px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.queue-item {
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.queue-item:last-child {
+    margin-bottom: 0;
+}
+
+.queue-item img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.queue-content {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.queue-content h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.queue-content .icon-container {
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.queue-content .icon-container i {
+    font-size: 25px;
+}
+
+/* Smartphone / Tablet: Media Queries */
+@media (max-width: 1025px) {
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .nav-wrapper {
+        position: fixed;
+        z-index: 10;
+    }
+
+    .nav {
+        top: 14px;
+    }
+
+    .nav-title {
+        font-size: 20px;
+    }
+
+    .nav-list {
+        display: flex;
+        position: relative;
+        top: 3px;
+        left: -4px;
+    }
+
+    .nav-list span {
+        font-size: 18px;
+        color: white;
+        position: relative;
+        left: 25px;
+        padding-bottom: 3px;
+    }
+
+    .nav-list span:first-child {
+        margin-right: 10px;
+    }
+    
+    .nav-list .selected {
+        border-bottom: 2px solid #1DB954;
+    }
+
+    /* Containers */
+    .page-wrapper {
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    .search-container {
+        position: relative;
+        flex-direction: column;
+        left: 5px;
+        top: 10px;
+    }
+
+    .custom-select {
+        width: calc(100% - 20px);
+        margin-right: unset;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: calc(100% - 40px);
+    }
+
+    .search-buttons {
+        width: calc(100% - 10px);
+    }
+
+    button {
+        width: 50%;
+    }
+
+    .main-container {
+        width: calc(100% - 20px);
+        margin-top: 15px;
+        height: calc(100% - 180px);
+        padding: 5px 10px;
+    }
+
+    /* Cards Container */
+    .cards-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        gap: 10px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* Player */
+    .player-container {
+        position: relative;
+        margin-top: unset;
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+    }
+
+    .player {
+        height: 380px;
+        width: calc(100% - 20px);
+        top: 10px;
+    }
+
+    .title-container {
+        top: -30px;
+    }
+
+    .queue {
+        margin-top: unset;
+        height: calc(100% - 480px);
+        width: calc(100% - 20px);
+        position: relative;
+        top: 30px;
+    }
+}
+
+/* Smartphone Vertical: Media Queries */
+@media (max-width: 500px) {
+    .card {
+        height: auto;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .card img {
+        width: 100%;
+    }
+
+    .card-content {
+        width: auto;
+        padding: 10px;
+        font-size: 80%;
+        overflow-y: unset;
+    }
+}
+
+/* Smartphone Vertical: (With Browser UI) */
+@media (max-width: 500px) and (max-height: 675px) {
+    .player {
+        height: 300px;
+    }
+
+    .img-container {
+        height: 100px;
+        width: 100px;
+        top: -25px;
+    }
+
+    .title-container {
+        top: -20px;
+    }
+
+    .controls-container {
+        bottom: 5px;
+    }
+
+    .queue {
+        height: calc(100% - 360px);
+        top: 70px;
+    }
+}
